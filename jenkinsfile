@@ -1,0 +1,37 @@
+pipeline {
+    agent any
+
+    stages {
+        stage('Checkout') {
+            steps {
+                checkout scm
+            }
+        }
+            stage('docker Build') {
+                    steps {
+                        sh 'docker build -t mohamedaminederouiche/angular .'
+                    }
+                }
+            stage('docker push') {
+                    steps {
+                        sh 'docker push mohamedaminederouiche/angular:latest'
+                    }
+                }
+            stage('Run Docker Compose') {
+                            steps {
+                                script {
+                                    // Perform Docker login
+                                    sh 'docker login -u mohamedaminederouiche -p Rafaleao17'
+
+                                    // Pull the Docker image
+                                    sh 'docker pull mohamedaminederouiche/angular'
+
+                                    // Run Docker Compose
+                                    sh 'docker compose up -d'
+                                }
+                            }
+                        }
+
+
+            }
+        }
