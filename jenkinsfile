@@ -27,7 +27,7 @@ pipeline {
                                     // Pull the Docker image
                                     sh 'docker pull mohamedaminederouiche/angular'
 
-                                    // Run Docker Compose
+                                    // Run Docker Compose    s
                                     sh 'docker compose up -d'
                                 }
                             }
