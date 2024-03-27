@@ -2,7 +2,7 @@ pipeline {
     agent any
 
     environment {
-        DOCKERHUB_CREDENTIALS = 'dockerhub'
+        DOCKERHUB_CREDENTIALS = 'DockerHub'
         IMAGE_NAME = 'mohamedaminederouiche/angular'
     }
 
@@ -27,7 +27,7 @@ pipeline {
                 script {
                     // Authenticate with Docker Hub
                     withCredentials([usernamePassword(credentialsId: "${DOCKERHUB_CREDENTIALS}", usernameVariable: 'DOCKERHUB_USERNAME', passwordVariable: 'DOCKERHUB_PASSWORD')]) {
-                        docker.withRegistry('https://registry.docker.io', 'dockerhub') {
+                        docker.withRegistry('https://registry-1.docker.io/v2', 'dockerhub') {
                             // Push Docker image to Docker Hub
                             docker.image("${IMAGE_NAME}:latest").push()
                         }
