@@ -1,10 +1,6 @@
 pipeline {
     agent any
 
-    environment {
-        DOCKERHUB_CREDENTIALS = 'DockerHub'
-        IMAGE_NAME = 'mohamedaminederouiche/angular'
-    }
 
     stages {
         stage('Checkout') {
@@ -12,43 +8,31 @@ pipeline {
                 checkout scm
             }
         }
-
-        stage('Docker Build') {
-            steps {
-                script {
-                    // Build Docker image
-                    docker.build("${IMAGE_NAME}:latest")
+            stage('docker Build') {
+                    steps {
+                        sh 'docker build -t mohamedaminederouiche/angular .'
+                    }
                 }
-            }
-        }
+            stage('docker push') {
+                    steps {
+                        sh 'docker push mohamedaminederouiche/angular:latest'
+                    }
+                }
+            stage('Run Docker Compose') {
+                            steps {
+                                script {
+                                    // Perform Docker login
+                                    sh 'docker login -u mohamedaminederouiche -p Rafaleao17'
 
-        stage('Docker Push') {
-            steps {
-                script {
-                    // Authenticate with Docker Hub
-                    withCredentials([usernamePassword(credentialsId: "${DOCKERHUB_CREDENTIALS}", usernameVariable: 'DOCKERHUB_USERNAME', passwordVariable: 'DOCKERHUB_PASSWORD')]) {
-                        docker.withRegistry('https://registry-1.docker.io/v2', 'dockerhub') {
-                            // Push Docker image to Docker Hub
-                            docker.image("${IMAGE_NAME}:latest").push()
+                                    // Pull the Docker image
+                                    sh 'docker pull mohamedaminederouiche/angular'
+
+                                    // Run Docker Compose    s
+                                    sh 'docker compose up -d'
+                                }
+                            }
                         }
-                    }
-                }
+
+
             }
         }
-
-        stage('Run Docker Compose') {
-            steps {
-                script {
-                    // Authenticate with Docker Hub
-                    withCredentials([usernamePassword(credentialsId: "${DOCKERHUB_CREDENTIALS}", usernameVariable: 'DOCKERHUB_USERNAME', passwordVariable: 'DOCKERHUB_PASSWORD')]) {
-                        // Pull Docker image from Docker Hub
-                        docker.image("${IMAGE_NAME}:latest").pull()
-
-                        // Run Docker Compose
-                        sh 'docker-compose up -d'
-                    }
-                }
-            }
-        }
-    }
-}
