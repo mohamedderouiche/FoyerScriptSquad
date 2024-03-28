@@ -32,6 +32,10 @@ constructor(private foyerService: FoyerService,private router: Router){}
     this.router.navigate(['update',fId]);
   }
 
+  navigateToaddFoyer() {
+    this.router.navigate(['add']);
+  }
+
   delete(id:any){
     this.foyerService.deleteFoyer(id).subscribe(
       ()=>{

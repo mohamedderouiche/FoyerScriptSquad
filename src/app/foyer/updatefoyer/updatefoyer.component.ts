@@ -39,7 +39,7 @@ update(){
   this.s.updateFoyer(this.formBuilder.value).subscribe(
     ()=>{
       // alert('modification effectué');
-      this.router.navigate(['foyer/show']);
+      this.router.navigate(['']);
       
     }
 )}

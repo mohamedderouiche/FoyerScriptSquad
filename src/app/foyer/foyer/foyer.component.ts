@@ -20,8 +20,8 @@ export class FoyerComponent {
     
     this.foyerservice.addFoyer(this.foyer).subscribe(
       () => {
-        // this.router.navigate(['foyer/show']);
-         alert('added');
+        this.router.navigate(['']);
+        // alert('added');
       },
       (error) => {
         console.error('Error adding foyer:', error);

@@ -7,7 +7,7 @@ import { UpdatefoyerComponent } from './foyer/updatefoyer/updatefoyer.component'
 const routes: Routes = [
   
   { path: 'add', component: FoyerComponent },
-  { path: 'show', component:  ShowfoyerComponent },
+  { path: '', component:  ShowfoyerComponent },
   { path: 'update/:id', component: UpdatefoyerComponent },
 
 ];
