@@ -10,22 +10,22 @@ pipeline {
         }
             stage('docker Build') {
                     steps {
-                        sh 'docker build -t mohamedaminederouiche/angular .'
+                        sh 'docker build -t mohamedaminederouiche05/angular .'
                     }
                 }
             stage('docker push') {
                     steps {
-                        sh 'docker push mohamedaminederouiche/angular:latest'
+                        sh 'docker push mohamedaminederouiche05/angular:latest'
                     }
                 }
             stage('Run Docker Compose') {
                             steps {
                                 script {
                                     // Perform Docker login
-                                    sh 'docker login -u mohamedaminederouiche -p Rafaleao17'
+                                    sh 'docker login -u mohamedaminederouiche05 -p Rafaleao17'
 
                                     // Pull the Docker image
-                                    sh 'docker pull mohamedaminederouiche/angular'
+                                    sh 'docker pull mohamedaminederouiche05/angular'
 
                                     // Run Docker Compose    s
                                     sh 'docker compose up -d'
