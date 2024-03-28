@@ -1,5 +1,10 @@
 pipeline {
     agent any
+    environment {
+        DOCKER_IMAGE_NAME = "karraymahdi/angular"
+        DOCKER_HUB_CREDENTIALS = 'docker'
+        DOCKER_COMPOSE_VERSION = "1.29.2"
+    }
 
 
     stages {
