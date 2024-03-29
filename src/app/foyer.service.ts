@@ -7,7 +7,7 @@ import { Observable } from 'rxjs';
   providedIn: 'root'
 })
 export class FoyerService {
-  private baseUrl = 'http://192.168.1.23:8050'; // Assuming your backend API is running at this URL
+  private baseUrl = 'http://192.168.1.14:8050'; // Assuming your backend API is running at this URL
 
   constructor(private http: HttpClient) { }
 
