@@ -1,0 +1,25 @@
+@import url('https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css'); 
+/* foyer.component.css */
+
+/* Styles pour le bouton "ADD" */
+.add-button {
+    margin-bottom: 10px; /* Ajoute de l'espace en dessous du bouton */
+  }
+  
+  /* Styles pour la table */
+  .foyer-table {
+    width: 100%; /* Définir la largeur de la table à 100% */
+  }
+  
+  /* Styles pour les cellules de la table */
+  .foyer-cell {
+    padding: 8px; /* Ajoute de l'espace intérieur à chaque cellule */
+  }
+  
+  /* Styles pour les boutons "Delete" et "Update" */
+  .action-buttons {
+    display: flex; /* Utilise Flexbox pour aligner les boutons horizontalement */
+    justify-content: space-between; /* Répartit l'espace disponible entre les boutons */
+    width: 120px; /* Définit une largeur fixe pour les boutons */
+  }
+  

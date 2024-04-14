@@ -7,8 +7,9 @@ import { Observable } from 'rxjs';
   providedIn: 'root'
 })
 export class FoyerService {
-  private baseUrl = 'http://192.168.1.21:8083'; // Assuming your backend API is running at this URL
-
+   private baseUrl = 'http://192.168.1.21:8083'; // Assuming your backend API is running at this URL
+  
+  // private baseUrl = 'http://localhost:8083';
   constructor(private http: HttpClient) { }
 
   findAll(): Observable<any[]> {
